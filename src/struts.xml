@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<package name="myApp" extends="struts-default">
+	<!-- 默认全局拦截器 -->
+		<global-results>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+		</global-results>
+		<!--1 index.jsp登陆映射 -->
+		<action name="userManagerAct" class="userAct" method="doLogin">
+			<result name="login">/index.jsp</result>
+		</action>
+		<!--2 edit.jsp映射 -->
+		<action name="query" class="userAct" method="doQuery" />
+		<action name="delete" class="userAct" method="doDelete" />
+		<action name="edit" class="userAct" method="doEdit">
+			<result name="editUser">/WEB-INF/jsp/editUser.jsp</result>
+		</action>
+		<!--3 增加用户addUser.jsp映射 -->
+		<action name="add" class="userAct" method="doAdd">
+			<result name="addUser">/WEB-INF/jsp/addUser.jsp</result>
+		</action>
+		
+		<!-- 4 添加request action-->
+		<action name="userManagerAct2" class="userAct2" method="test">
+			<result name="input">/WEB-INF/jsp/request_demo.jsp</result>
+		</action>
+		
+		<!-- 5 添加request action 传值-->
+		<action name="userManagerAct3" class="userAct3" method="test">
+			<result name="input">/WEB-INF/jsp/request_demo.jsp</result>
+		</action>
+	</package>
+</struts>    
